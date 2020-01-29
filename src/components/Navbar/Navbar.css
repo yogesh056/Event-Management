@@ -1,0 +1,15 @@
+.main-header
+{
+    padding: 0px;
+    height: 66px;
+}
+.main-header ul
+{
+    border: 0px;
+}
+.navbar
+{
+    background:#ffffff;
+    align-items: flex-end;
+    border-bottom: 2px solid #1890ff;
+}

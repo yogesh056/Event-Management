@@ -14,7 +14,7 @@ export default function Sidebar() {
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultOpenKeys={['sub1','sub2','sub3']}
             style={{ height: '100%' }}
           >
             <SubMenu
