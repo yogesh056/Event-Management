@@ -68,6 +68,18 @@ class UsersRoutes {
   
         res.end();
       });
+      router.post("/user",  async (req, res) => {
+        try {
+          console.log(req.body)
+        const response = await this.controller.getUserDetails(req.body);
+          res.json(response);
+        } catch (err) {
+          global.log.error(err);
+          res.json({ code: 500, msg: "An error occurred !" });
+        }
+  
+        res.end();
+      });
     }
     getRouter() {
       return router;

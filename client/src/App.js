@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Routes from './Routes';
-import Snackbar from './components/Notifier/Snackbar/Snackbar';
 // import MomentUtils from '@date-io/moment';
 
 class App extends Component {
@@ -14,7 +13,6 @@ class App extends Component {
 		return (
 	
 				<div className="App">
-					<Snackbar />
 					<Routes />
 				</div>
 		);

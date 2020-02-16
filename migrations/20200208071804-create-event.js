@@ -31,6 +31,12 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      start_date: {
+        type: Sequelize.DATE
+      },
+      end_date: {
+        type: Sequelize.DATE
+      },
       images: {
         type: Sequelize.JSON
       },

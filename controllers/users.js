@@ -14,172 +14,233 @@ const transporter = nodemailer.createTransport({
   }
 });
 class UsersController {
-    // Create User
-    signin(data) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const {
-                    first_name,
-                    last_name,
-                    user_name,
-                    password,
-                    email,
-                    phone,
-                    dob,
-                    college,
-                    city,
-                    state,
-                    gender,
-                    image
-                } = data;
-                const response = await models.User.findOne({ where: { email: email } });
-                if (response) {
-                    resolve({ code: 200, msg: "User Already Exist" });
-                }
-                else {
-                    const hashedPassword = await bcrypt.hash(password, 10, function (err, hash) {
-                        return hash
-                    });
-                    models.User.create({
-                        first_name: first_name,
-                        last_name: last_name,
-                        user_name: user_name,
-                        image: image,
-                        password: hashedPassword,
-                        email: email,
-                        phone: phone,
-                        dob: moment(dob, "YYYY-MM-DD"),
-                        college: college,
-                        city: city,
-                        state: state,
-                        gender: gender
-                    }).then(response => {
-                        console.log("user created:", response);
-                    });
-                    resolve({ code: 200, msg: "User Created Successfully" });
-                }
-
-            } catch (err) {
-                global.log.error(err);
-                console.log(err)
-                reject(err)
+  // Create User
+  signin(data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const {
+          email,
+          first_name,
+          last_name,
+          user_name,
+          password,
+          secretKey,
+          phone,
+          dob,
+          college,
+          city,
+          state,
+          gender,
+          image
+        } = data;
+        if (password === "googleLogin") {
+          const checkRepeatedUser = await models.User.findOne({ where: { email: email } });
+          if (checkRepeatedUser) {
+            checkRepeatedUser.destroy()
+          }
+          const response = await models.User.create({
+            first_name: first_name,
+            last_name: last_name,
+            user_name: user_name,
+            image: image,
+            password: password,
+            email: email,
+            phone: phone,
+            dob: dob,
+            college: college,
+            city: city,
+            state: state,
+            gender: gender
+          })
+          resolve({
+            code: 200,
+            msg: "Logged In Successfully",
+            user_id: response['dataValues']['id']
+          });
+        }
+        else {
+          const isSecretKeyGenerated = await models.SecretKey.findOne({ where: { Email: email } });
+          if (isSecretKeyGenerated) {
+            const isValidSecretKey = await models.SecretKey.findOne({ where: { Email: email, secret_key: secretKey } });
+            if (isValidSecretKey) {
+              const hashedPassword = await bcrypt.hash(password, 10, function (err, hash) {
+                return hash
+              });
+              models.User.create({
+                first_name: first_name,
+                last_name: last_name,
+                user_name: user_name,
+                image: image,
+                password: hashedPassword,
+                email: email,
+                phone: phone,
+                dob: moment(dob, "YYYY-MM-DD"),
+                college: college,
+                city: city,
+                state: state,
+                gender: gender
+              }).then(response => {
+                console.log("user created:", response);
+              });
+              resolve({ code: 200, msg: "User Created Successfully" });
             }
+            else {
+              resolve({ code: 400, msg: "Not a valid Secret Key" });
+            }
+          }
+        }
+
+
+      } catch (err) {
+        global.log.error(err);
+        console.log(err)
+        reject(err)
+      }
+    });
+  }
+  test() {
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        resolve({ code: 200, msg: "Tested Successfully" });
+      } catch (err) {
+        global.log.error(err);
+        console.log(err)
+        reject(err)
+      }
+    });
+  }
+  async verifyEmail(data) {
+    try {
+      const {
+        email,
+      } = data;
+      console.log(data)
+      const response = await models.User.findOne({ where: { email: email } });
+      if (response) {
+        return Promise.resolve({ code: 400, msg: "User Already Exist" });
+      }
+      else {
+        let secretKey = Math.floor(100000 + Math.random() * 900000)
+
+        const matchUser = await models.SecretKey.findOne({ where: { Email: email } });
+
+        if (matchUser) {
+          matchUser.destroy()
+        }
+        await models.SecretKey.create({ Email: email, secret_key: secretKey })
+        this.sendSecretKey(email, secretKey)
+        return Promise.resolve({
+          code: 200,
+          msg: "Please check your mail for the Secret Key"
         });
+      }
+    } catch (err) {
+      console.error(err);
+      global.log.error(err);
+      return Promise.reject(err);
     }
-    test() {
+  }
 
-        return new Promise(async (resolve, reject) => {
-            try {
-                resolve({ code: 200, msg: "Tested Successfully" });
-            } catch (err) {
-                global.log.error(err);
-                console.log(err)
-                reject(err)
-            }
+  async login(data) {
+    try {
+      const {
+        password,
+        email
+      } = data;
+
+      // If Email or Password Not Given
+      console.log("123", data, email, password)
+      if (!email || !password) {
+        return Promise.resolve({
+          code: 404,
+          msg: "Please Enter the Credentials Properly"
         });
-    }
-    async verifyEmail(data) {
-        try {
-            const {
-                email,
-            } = data;
+      }
+      const response = await models.User.findOne({ where: { email: email } });
 
-            const response= await this.sendSecretKey(email);
-        //    console.log(response)
-        //     if (response) {
-
-               
-            // } else {
-            //     return Promise.resolve({ code: 400, msg: "No Events" });
-            // }
-
-
-        } catch (err) {
-            console.error(err);
-            global.log.error(err);
-            return Promise.reject(err);
+      if (response) {
+        const match = await bcrypt.compare(password, response['dataValues']['password'])
+        console.log(response)
+        if (match) {
+          return Promise.resolve({
+            code: 200,
+            msg: "Logged In Successfully",
+            user_id: response['dataValues']['id']
+          });
         }
-    }
-   
-    async login(data) {
-        try {
-            const {
-                password,
-                email
-            } = data;
-
-            // If Email or Password Not Given
-            console.log("123",data,email,password)
-            if (!email || !password) {
-                return Promise.resolve({
-                    code: 404,
-                    msg: "Please Enter the Credentials Properly"
-                });
-            }
-            const response = await models.User.findOne({ where: { email: email } });
-
-            if (response) {
-                const match = await bcrypt.compare(password, response['dataValues']['password'])
-                console.log(response)
-                if (match) {
-                    return Promise.resolve({
-                        code: 200,
-                        msg: "Logged In Successfully",
-                        user_id: response['dataValues']['id']
-                    });
-                }
-                else {
-                    return Promise.resolve({ code: 400, msg: "Password incorrect" });
-                }
-            } else {
-                return Promise.resolve({ code: 400, msg: "User does not Exist" });
-            }
-
-
-        } catch (err) {
-            console.error(err);
-            global.log.error(err);
-            return Promise.reject(err);
+        else {
+          return Promise.resolve({ code: 400, msg: "Password incorrect" });
         }
+      } else {
+        return Promise.resolve({ code: 400, msg: "User does not Exist" });
+      }
+
+
+    } catch (err) {
+      console.error(err);
+      global.log.error(err);
+      return Promise.reject(err);
     }
+  }
 
-    async getEvents(data) {
-        try {
-            const {
-                user_id,
-            } = data;
+  async getEvents(data) {
+    try {
+      const {
+        user_id,
+      } = data;
 
-            const response = await models.Event.findOne({ where: { UserId:user_id}});
+      const response = await models.Event.findOne({ where: { UserId: user_id } });
 
-            if (response) {
+      if (response) {
 
-                return Promise.resolve({ code: 200, msg: "Got all Events" ,response:response});
-            } else {
-                return Promise.resolve({ code: 400, msg: "No Events" });
-            }
+        return Promise.resolve({ code: 200, msg: "Got all Events", response: response });
+      } else {
+        return Promise.resolve({ code: 400, msg: "No Events" });
+      }
 
 
-        } catch (err) {
-            console.error(err);
-            global.log.error(err);
-            return Promise.reject(err);
-        }
+    } catch (err) {
+      console.error(err);
+      global.log.error(err);
+      return Promise.reject(err);
     }
-        sendSecretKey(email) {
-           
-          return new Promise(async (resolve, reject) => {
-            try {
-              console.log("mail callled")
-              
-              let secretKey="452490"
-      
-              
-              var mailOptions = {
-                from: 'Astute.Event.Horizon@gmail.com',
-                to: email,
-                subject: 'Sending Email using Node.js',
-                text:"hello",
-                html: `<body  style="margin-top:0 ;margin-bottom:0 ;margin-right:0 ;margin-left:0 ;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;background-color:#ffffff00;">
+  }
+  async getUserDetails(data) {
+    try {
+      const {
+        user_id,
+      } = data;
+
+      const response = await models.User.findOne({ where: { id: user_id } });
+
+      if (response) {
+        return Promise.resolve({ code: 200, msg: "Welcome Back", response: response });
+      } else {
+        return Promise.resolve({ code: 400, msg: "No Events" });
+      }
+
+
+    } catch (err) {
+      console.error(err);
+      global.log.error(err);
+      return Promise.reject(err);
+    }
+  }
+  sendSecretKey(email, secretKey) {
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        console.log("mail callled")
+
+
+
+        var mailOptions = {
+          from: 'Astute.Event.Horizon@gmail.com',
+          to: email,
+          subject: 'Secret key Verification',
+          text: "hello",
+          html: `<body  style="margin-top:0 ;margin-bottom:0 ;margin-right:0 ;margin-left:0 ;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;background-color:#ffffff00;">
           <center style="width:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-image:url(https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);   background-repeat: no-repeat; background-size: 100% 100%;
           ">
             <div style="max-width:600px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;">
@@ -230,23 +291,23 @@ class UsersController {
             </div>
           </center>
         </body>` // html body
-              };
-              
-              transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                    resolve({ code: 200, msg: "Mail Sent"});
-                }
-              });
-              
-            } catch (err) {
-              global.log.error(err);
-              reject(err);
-            }
-          });
-        }
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            resolve()
+          }
+        });
+
+      } catch (err) {
+        global.log.error(err);
+        reject(err);
+      }
+    });
+  }
 }
 module.exports = () => {
-    return new UsersController()
+  return new UsersController()
 }

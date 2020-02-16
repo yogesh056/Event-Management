@@ -1,0 +1,16 @@
+
+.ant-menu-horizontal
+{
+    text-align: right;
+    height: 64px;
+}
+.ant-layout-header {
+    height: 64px;
+    padding: 10px 30px;
+    line-height: 64px;
+    background: #ffffff;
+}
+.list-events
+{
+    margin-top:35px
+}

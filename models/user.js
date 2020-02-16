@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     // associations can be defined here
     User.hasMany(models.Event, {as: 'events'})
+    User.hasOne(models.SecretKey, {as: 'secretKeys'})
     User.hasMany(models.Vote, {as: 'votes'})
     User.hasMany(models.Comment, {as: 'comment'})
 
