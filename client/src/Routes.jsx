@@ -25,9 +25,10 @@ class Routes extends Component {
 			<Router>
 				<Switch>
 					<Layout>
+					<LogRoute   exact path="/login" component={WrappedLogin}/>
+					<LogRoute   exact path="/signin" component={Stepper}/>
 					<PrivateRoute  path="/" component={Dashboard} />
-					<Route  exact path="/login" component={WrappedLogin} />
-					<Route  exact path="/signin" component={Stepper}/>
+					
 				
 					</Layout>
 				</Switch>
@@ -51,4 +52,20 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 	}
 	/>
 	);
+const LogRoute = ({ component: Component, ...rest }) => (
+		<Route
+		{...rest}
+		render={props =>
+		!Auth.getAuth() ? (
+		<Component {...props} />
+		) : (
+		<Redirect
+		to={{
+		pathname: "/"
+		}}
+		/>
+		)
+		}
+		/>
+		);
 export default Routes;

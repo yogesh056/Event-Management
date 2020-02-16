@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from "./Navbar/Navbar"
 import SideBar from "./SideBar/SideBar"
-import { Layout, Breadcrumb } from 'antd';
+import { Layout, Breadcrumb,BackTop } from 'antd';
 import { Route, Switch } from 'react-router-dom';
 import Events from "../Modules/Events/Events"
 const { Header, Footer, Sider, Content } = Layout;
@@ -37,6 +37,10 @@ export default class Dashboard extends Component {
                             }}
                         >
                             <Route path="/events" component={Events} />
+                            <Route path="/your-events" component={Events} />
+                            <BackTop>
+      <div className="ant-back-top-inner">UP</div>
+    </BackTop>
                         </Content>
                     </Layout>
                 </Layout>

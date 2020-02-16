@@ -14,6 +14,7 @@ class EventsController {
                     name,
                     city,
                     state,
+                    start_date,
                     images,
                     college,
                     description,
@@ -24,6 +25,7 @@ class EventsController {
                     name: name,
                     description: description,
                     images: images,
+                    start_date:start_date,
                     city: city,
                     state: state,
                     college: college
@@ -103,7 +105,14 @@ class EventsController {
 
         try {
             let response
-            response = await models.Event.findAll({})
+            response = await models.Event.findAll({
+                include: [
+                  {
+                    model: models.User,  
+                    as: 'user',
+                  }
+                ]
+              })
             return Promise.resolve({ code: 200, msg: "Got all Events", response: response });
 
         } catch (err) {

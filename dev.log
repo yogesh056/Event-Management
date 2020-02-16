@@ -8388,3 +8388,419 @@ SyntaxError: Unexpected token =
 
 
 
+
+
+
+error [Sun Feb 16 2020 11:33:03 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:18
+                    images,
+                    ^^^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:04 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:18
+                    images,
+                    ^^^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:05 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:18
+                    images,
+                    ^^^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:06 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:18
+                    images,
+                    ^^^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:07 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:18
+                    images,
+                    ^^^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+
+
+error [Sun Feb 16 2020 11:33:14 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:29
+                    city: city,
+                    ^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:15 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:29
+                    city: city,
+                    ^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:15 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:29
+                    city: city,
+                    ^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:18 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:29
+                    city: city,
+                    ^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 11:33:18 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:29
+                    city: city,
+                    ^^^^
+
+SyntaxError: Unexpected identifier
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+
+
+
+
+
+
+
+
+
+error [Sun Feb 16 2020 12:04:22 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:108
+            response = await models.Event..findAll({
+                                          ^
+
+SyntaxError: Unexpected token .
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+error [Sun Feb 16 2020 12:04:22 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:108
+            response = await models.Event..findAll({
+                                          ^
+
+SyntaxError: Unexpected token .
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+
+error [Sun Feb 16 2020 12:04:26 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:111
+                    model: , 
+                           ^
+
+SyntaxError: Unexpected token ,
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+
+
+
+
+error [Sun Feb 16 2020 12:04:41 GMT+0530 (India Standard Time)]  ReferenceError: User is not defined
+    at EventsController.getAll (/Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:111:28)
+    at /Users/yogeshwaranramesh/College/Event-Management/routes/events.js:23:48
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:317:13)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/Users/yogeshwaranramesh/College/Event-Management/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:317:13)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:275:10)
+error [Sun Feb 16 2020 12:04:41 GMT+0530 (India Standard Time)]  ReferenceError: User is not defined
+    at EventsController.getAll (/Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:111:28)
+    at /Users/yogeshwaranramesh/College/Event-Management/routes/events.js:23:48
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:317:13)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/Users/yogeshwaranramesh/College/Event-Management/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:317:13)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/yogeshwaranramesh/College/Event-Management/node_modules/express/lib/router/index.js:275:10)
+
+
+error [Sun Feb 16 2020 12:05:09 GMT+0530 (India Standard Time)]  EagerLoadingError [SequelizeEagerLoadingError]: User is associated to Event using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+    at Function._getIncludedAssociation (/Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:727:13)
+    at Function._validateIncludedElement (/Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:619:53)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:516:37
+    at Array.map (<anonymous>)
+    at Function._validateIncludedElements (/Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:511:39)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:1726:14
+    at tryCatcher (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:15:14)
+    at processImmediate (internal/timers.js:439:21) {
+  name: 'SequelizeEagerLoadingError'
+}
+error [Sun Feb 16 2020 12:05:09 GMT+0530 (India Standard Time)]  EagerLoadingError [SequelizeEagerLoadingError]: User is associated to Event using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+    at Function._getIncludedAssociation (/Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:727:13)
+    at Function._validateIncludedElement (/Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:619:53)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:516:37
+    at Array.map (<anonymous>)
+    at Function._validateIncludedElements (/Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:511:39)
+    at /Users/yogeshwaranramesh/College/Event-Management/node_modules/sequelize/lib/model.js:1726:14
+    at tryCatcher (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/yogeshwaranramesh/College/Event-Management/node_modules/bluebird/js/release/async.js:15:14)
+    at processImmediate (internal/timers.js:439:21) {
+  name: 'SequelizeEagerLoadingError'
+}
+
+
+error [Sun Feb 16 2020 12:05:58 GMT+0530 (India Standard Time)]  /Users/yogeshwaranramesh/College/Event-Management/controllers/events.js:112
+                    as: 'user
+                        ^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at Module._compile (internal/modules/cjs/loader.js:720:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Module.require (internal/modules/cjs/loader.js:683:19)
+    at require (internal/modules/cjs/helpers.js:16:16)
+    at Server.initControllers (/Users/yogeshwaranramesh/College/Event-Management/server.js:54:38)
+    at Server.init (/Users/yogeshwaranramesh/College/Event-Management/server.js:18:18)
+    at new Server (/Users/yogeshwaranramesh/College/Event-Management/server.js:12:14)
+    at Object.<anonymous> (/Users/yogeshwaranramesh/College/Event-Management/server.js:88:16)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:839:10)
+    at internal/main/run_main_module.js:17:11
+
+

@@ -30,7 +30,7 @@ export default class SideBar extends React.Component {
           }
         >
             <Menu.Item key="2"><Link to="/events">All Events</Link></Menu.Item>
-            <Menu.Item key="3">Your Events</Menu.Item>
+            <Menu.Item key="3"><Link to="/your-events">Your Events</Link></Menu.Item>
             {/* <Menu.Item key="3">Option 3</Menu.Item>
             <Menu.Item key="4">Option 4</Menu.Item> */}
         </SubMenu>

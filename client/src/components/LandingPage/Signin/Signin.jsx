@@ -10,11 +10,8 @@ import {
   Select,
   Row,
   Col,
-  Icon,
-  Steps,
   DatePicker ,
   message,
-  Upload,
   Button,
   Layout
 } from 'antd';
@@ -57,17 +54,18 @@ class Signin extends React.Component {
         values.college=1
         values.city=2
         values.state=3
+        values.image=this.state.imgurl
         console.log(values)
         let response
         try{
           response= await API.post('/users/verify',{email:values.email})
           console.log(response)
-          message.success(response.data.msg,4);
+          response.data.code===200?message.success(response.data.msg,4): message.error(response.data.msg,4); 
           this.props.next(values)
         }
         catch(e)
         {
-          message.error(e.msg,4);
+         console.log(e)
         }
       
       }

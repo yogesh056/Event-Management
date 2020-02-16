@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import API from '../../../middleware/api';
+import Auth from "../../../auth/ProtectedRoute";
 
 const { SubMenu } = Menu;
 // import { WrappedLogin } from '../Login/Login'
@@ -20,11 +21,13 @@ const { SubMenu } = Menu;
     };
   }
   componentWillMount() {
+    setTimeout(() => {
     let isLogged = localStorage.getItem('user_id')
-    console.log(isLogged)
+    console.log("123",isLogged)
     if (isLogged) {
       this.getUserDetails(isLogged)
     }
+  },2000)
   }
   getUserDetails=async(isLogged)=>
   {
@@ -36,6 +39,7 @@ const { SubMenu } = Menu;
   logOut=()=>
   {
     localStorage.removeItem("user_id");
+    Auth.signout()
     this.props.history.push('/login')
 
   }

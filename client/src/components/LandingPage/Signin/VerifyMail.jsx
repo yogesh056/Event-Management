@@ -53,16 +53,22 @@ class VerifyMail extends React.Component {
                         "city": 1,
                         "state": 1,
                         "gender": this.props.value.gender,
-                        "image": "testImage"
+                        "image": this.props.value.image
                     })
-                    message.success(response.data.msg,4);
+                    if(response.data.code===200)
+                    {message.success(response.data.msg,4)
+                        this.props.history.push("/login")
+                    }
+                    else{
+                        message.error(response.data.msg,4); 
+                    }
                     console.log(response.data)
-                    this.props.next(values)
-                    this.props.history.push("/login")
+                    // this.props.next(values)
+                 
                   }
                   catch(e)
                   {
-                    message.error(e.msg,4);
+                  console.log(e)
                   }
             }
         });

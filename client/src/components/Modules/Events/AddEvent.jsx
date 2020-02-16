@@ -1,11 +1,20 @@
-import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Icon } from 'antd';
+import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Icon, message } from 'antd';
 import React, { Component } from 'react'
 import AsyncSelect from '../../Inputs/AsyncSelect';
-import {storage} from '../../../firebase/index';
+import { storage } from '../../../firebase/index';
+import API from "../../../middleware/api"
+import moment from 'moment';
+
 const { Option } = Select;
 
 class EventForm extends React.Component {
-  state = { visible: false };
+  constructor(props) {
+    super(props);
+    this.state = {
+      confirmDirty: false,
+      loading: false,
+    };
+  }
 
   showDrawer = () => {
     this.setState({
@@ -18,37 +27,68 @@ class EventForm extends React.Component {
       visible: false,
     });
   };
-  uploadImage=(e)=>
-  {
-    const img=e.target.files[0];
-    this.setState(({img}));
-  const uploadTask=storage.ref(`images/${img.name}`).put(img);
-    uploadTask.on('state_changed',(snapshot)=>{},
-    (error)=>{console.log(error)},
-    ()=>{
-      storage.ref('images').child(img.name).getDownloadURL().then(url=>{console.log('uuu',url)
-      this.setState({imgurl:url},()=>{
-        console.log('123',this.state.imgurl)
+  uploadImage = (e) => {
+    const img = e.target.files[0];
+    this.setState(({ img, loading: true }));
+    const uploadTask = storage.ref(`images/${img.name}`).put(img);
+    uploadTask.on('state_changed', (snapshot) => { },
+      (error) => { console.log(error) },
+      () => {
+        storage.ref('images').child(img.name).getDownloadURL().then(url => {
+          console.log('uuu', url)
+          this.setState({ imgurl: url, loading: false }, () => {
+            console.log('123', this.state.imgurl)
+          })
+
+        })
       })
-      
-      })
-    })
   }
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll(async (err, values) => {
+      if (!err) {
+        values.college = 1
+        values.city = 2
+        values.state = 3
+        values.UserId=localStorage.getItem('user_id')
+        values.images = this.state.imgurl
+        console.log(values)
+        let response
+        try {
+          response = await API.post('/events/addEvent', { name: values.name, description: values.description, image: values.image, state: values.state, city: values.city, college: values.college, start_date: values.start_date })
+          console.log(response)
+          message.success(response.data.msg, 4);
+          this.onClose()
+
+        }
+        catch (e) {
+          message.error(e.msg, 4);
+        }
+
+      }
+
+    });
+    // handleConfirmBlur = e => {
+    //   const { value } = e.target;
+    //   this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+    // };
+  };
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { loading } = this.state
     return (
       <div>
-        <Button type="primary" onClick={this.showDrawer} style={{float: 'right'}}>
+        <Button type="primary" onClick={this.showDrawer} style={{ float: 'right' }}>
           <Icon type="plus" /> New Event
         </Button>
         <Drawer
-          title="Create a new account"
+          title="Create a new Event"
           width={720}
           onClose={this.onClose}
           visible={this.state.visible}
           bodyStyle={{ paddingBottom: 80 }}
         >
-          <Form layout="vertical" hideRequiredMark>
+          <Form layout="vertical" onSubmit={this.handleSubmit}>
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item label="Name">
@@ -58,32 +98,32 @@ class EventForm extends React.Component {
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="Url">
-                <input
-                  type="file"
-                  className="form-control"
-                  name="image"
-                  onChange={this.uploadImage}
-                />
+                <Form.Item label="Upload Image">
+                  {!loading ? <input
+                    type="file"
+                    className="form-control"
+                    name="image"
+                    onChange={this.uploadImage}
+                  /> : <Icon type="loading" style={{ fontSize: 24 }} spin />}
                 </Form.Item>
               </Col>
             </Row>
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item label="State">
-                  {getFieldDecorator('owner', {
-                    rules: [{ required: true, message: 'Please select an owner' }],
+                  {getFieldDecorator('state', {
+                    rules: [{ message: 'Please select an owner' }],
                   })(
-                    <AsyncSelect/>
+                    <AsyncSelect />
                   )}
                 </Form.Item>
               </Col>
               <Col span={12}>
                 <Form.Item label="City">
-                  {getFieldDecorator('type', {
-                    rules: [{ required: true, message: 'Please choose the type' }],
+                  {getFieldDecorator('city', {
+                    rules: [{ message: 'Please choose the type' }],
                   })(
-                    <AsyncSelect/>
+                    <AsyncSelect />
                   )}
                 </Form.Item>
               </Col>
@@ -91,22 +131,19 @@ class EventForm extends React.Component {
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item label="College">
-                  {getFieldDecorator('approver', {
-                    rules: [{ required: true, message: 'Please choose the approver' }],
+                  {getFieldDecorator('college', {
+                    rules: [{ message: 'Please choose the approver' }],
                   })(
-                    <AsyncSelect/>
+                    <AsyncSelect />
                   )}
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label="DateTime">
-                  {getFieldDecorator('dateTime', {
-                    rules: [{ required: true, message: 'Please choose the dateTime' }],
+                <Form.Item label="Date of Birth">
+                  {getFieldDecorator('start_date', {
+                    rules: [{ required: true, message: 'Please Select DOB' }],
                   })(
-                    <DatePicker.RangePicker
-                      style={{ width: '100%' }}
-                      getPopupContainer={trigger => trigger.parentNode}
-                    />,
+                    <DatePicker defaultValue={moment('2015-01-01', 'YYYY-MM-DD')} format='YYYY-MM-DD' />
                   )}
                 </Form.Item>
               </Col>
@@ -125,6 +162,9 @@ class EventForm extends React.Component {
                 </Form.Item>
               </Col>
             </Row>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
           </Form>
           <div
             style={{
@@ -141,9 +181,7 @@ class EventForm extends React.Component {
             <Button onClick={this.onClose} style={{ marginRight: 8 }}>
               Cancel
             </Button>
-            <Button onClick={this.onClose} type="primary">
-              Submit
-            </Button>
+
           </div>
         </Drawer>
       </div>
@@ -151,5 +189,5 @@ class EventForm extends React.Component {
   }
 }
 
-export  const AddEvent = Form.create()(EventForm);
+export const AddEvent = Form.create()(EventForm);
 

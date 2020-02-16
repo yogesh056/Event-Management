@@ -17,7 +17,7 @@ API.interceptors.response.use(
 		// document.getElementById('root-loader').classList.remove('visible');
 
 		const { code, msg } = response.data;
-		if (code === 200) {
+		if (code === 200 ||code === 400) {
 			return response;
 		} else {
             throw { ...response, msg };

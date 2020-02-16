@@ -35,7 +35,7 @@ class Login extends React.Component {
                           "gender":"",
                           "image": response.imageUrl,
                       })
-                      message.success(response.data.msg,4);
+                      response.data.code===200?message.success(response.data.msg,4): message.error(response.data.msg,4); 
                       localStorage.setItem("user_id",response.data.user_id)
                       Auth.authenticate()
                       this.props.history.push('/')
@@ -43,7 +43,6 @@ class Login extends React.Component {
                     catch(e)
                     {
                       console.log(e)
-                      message.error(e.msg,4);
                     }
   
   }
