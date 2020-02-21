@@ -21,20 +21,13 @@ const { SubMenu } = Menu;
     };
   }
   componentWillMount() {
-    setTimeout(() => {
-    let isLogged = localStorage.getItem('user_id')
-    console.log("123",isLogged)
-    if (isLogged) {
-      this.getUserDetails(isLogged)
+    setTimeout(async() => {
+    let userDetail=await Auth.getUserDetails()
+    console.log("User Navbar",userDetail)
+    if (userDetail) {
+      this.setState({ isLogged: true ,userDetail},()=>{console.log("123",this.state)})
     }
-  },2000)
-  }
-  getUserDetails=async(isLogged)=>
-  {
-   let response= await API.post('/users/user',{user_id:isLogged})
-        let userDetails=response.data.response
-        console.log(userDetails,response)
-        this.setState({ isLogged: true ,userDetails},()=>{console.log("123",this.state)})
+  },1000)
   }
   logOut=()=>
   {
@@ -52,7 +45,7 @@ const { SubMenu } = Menu;
     });
   };
   conditionalRender() {
-    const {userDetails ,isLogged} = this.state
+    const {userDetail,isLogged} = this.state
     if(isLogged)
       return(
 
@@ -61,12 +54,17 @@ const { SubMenu } = Menu;
       <Icon type="notification" />
     </Badge>
         </Menu.Item>,
+        <Menu.Item>
+        <Badge dot>
+        <Icon type="message" />
+  </Badge>
+      </Menu.Item>,
         <SubMenu
           title={
-            <Avatar src={userDetails.image} />
+            <Avatar src={userDetail.image} />
           }
         >
-          <Menu.ItemGroup title={userDetails.user_name}>
+          <Menu.ItemGroup title={userDetail.user_name}>
             <Menu.Item key="settings">Settings</Menu.Item>
             {/* <Menu.Item key="setting:2">Option 2</Menu.Item> */}
           </Menu.ItemGroup>

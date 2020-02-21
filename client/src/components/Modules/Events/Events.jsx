@@ -3,8 +3,8 @@ import CardContainer from './CardContainer/CardContainer'
 
 export default class Events extends Component {
     render() {
-        return ([
-                <CardContainer />]
+        return (
+                <CardContainer />
         )
     }
 }

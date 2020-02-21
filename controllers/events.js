@@ -25,7 +25,7 @@ class EventsController {
                     name: name,
                     description: description,
                     images: images,
-                    start_date:start_date,
+                    start_date: start_date,
                     city: city,
                     state: state,
                     college: college
@@ -84,35 +84,18 @@ class EventsController {
             return Promise.reject(err)
         }
     }
-    async getVoteCount(data) {
-
-        try {
-            const {
-                event_id,
-            } = data;
-            let upVote, downVote
-            upVote = await models.Vote.count({ where: { EventId: event_id, voteBool: true } });
-            downVote = await models.Vote.count({ where: { EventId: event_id, voteBool: false } });
-            return Promise.resolve({ code: 200, msg: "Got all Votes", upVote: upVote, downVote: downVote });
-
-        } catch (err) {
-            global.log.error(err);
-            console.log(err)
-            return Promise.reject(err)
-        }
-    }
     async getAll() {
 
         try {
             let response
             response = await models.Event.findAll({
                 include: [
-                  {
-                    model: models.User,  
-                    as: 'user',
-                  }
-                ]
-              })
+                    {
+                        model: models.User,
+                        as: 'user',
+                    },
+                ],
+            })
             return Promise.resolve({ code: 200, msg: "Got all Events", response: response });
 
         } catch (err) {
@@ -141,17 +124,35 @@ class EventsController {
             return Promise.reject(err)
         }
     }
-    async getEventComments(data) {
+    async getEventDetails(data) {
         const {
             event_id,
+            user_id
         } = data;
 
         try {
-            let response,count
-            response = await models.Comment.findAll({ where: { EventId: event_id } })
-            count = await models.Comment.count({ where: { EventId: event_id } });
-            return Promise.resolve({ code: 200, msg: "Got  all Commwents", response: response, count: count });
-
+            let comments, commentCount, upVote, downVote,vote_bool
+            comments = await models.Comment.findAll({
+                where: { EventId: event_id }, include: [
+                    {
+                        model: models.User,
+                        as: 'user'
+                    }
+                ]
+            })
+            vote_bool = await models.Vote.findOne({
+                where: { EventId: event_id,UserId:user_id}
+            })
+            if(vote_bool)
+            {
+                console.log(vote_bool)
+                vote_bool=vote_bool.voteBool?"liked":"disliked"
+                console.log(vote_bool)
+            }
+            commentCount = await models.Comment.count({ where: { EventId: event_id } });
+            upVote = await models.Vote.count({ where: { EventId: event_id, voteBool: true } });
+            downVote = await models.Vote.count({ where: { EventId: event_id, voteBool: false } });
+            return Promise.resolve({ code: 200, msg: "Got Event Details", upVote: upVote, downVote: downVote, comments: comments, commentCount: commentCount,voteBool:vote_bool });
         } catch (err) {
             global.log.error(err);
             console.log(err)

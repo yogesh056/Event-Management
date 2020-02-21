@@ -4,6 +4,7 @@ import SideBar from "./SideBar/SideBar"
 import { Layout, Breadcrumb,BackTop } from 'antd';
 import { Route, Switch } from 'react-router-dom';
 import Events from "../Modules/Events/Events"
+import Forum from "../Modules/Forum/Forum"
 const { Header, Footer, Sider, Content } = Layout;
 
 export default class Dashboard extends Component {
@@ -18,7 +19,7 @@ export default class Dashboard extends Component {
                         background: "#ffffff",
                         // overflow: 'auto',
                         // height: '100vh',
-                        // position: 'fixed',
+                        position: 'fixed',
                         // left: 0,
                         width: 300
                     }}>
@@ -38,6 +39,7 @@ export default class Dashboard extends Component {
                         >
                             <Route path="/events" component={Events} />
                             <Route path="/your-events" component={Events} />
+                            <Route path="/forum" component={Forum} />
                             <BackTop>
       <div className="ant-back-top-inner">UP</div>
     </BackTop>

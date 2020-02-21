@@ -161,12 +161,12 @@ class UsersController {
 
       if (response) {
         const match = await bcrypt.compare(password, response['dataValues']['password'])
-        console.log(response)
+        console.log("user",response)
         if (match) {
           return Promise.resolve({
             code: 200,
             msg: "Logged In Successfully",
-            user_id: response['dataValues']['id']
+            id: response['dataValues']['id']
           });
         }
         else {

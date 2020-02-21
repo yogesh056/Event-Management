@@ -43,8 +43,8 @@ export default class SideBar extends React.Component {
             </span>
           }
         >
-          <Menu.Item key="4">All Questions</Menu.Item>
-          <Menu.Item key="5">Your Questions</Menu.Item>
+          <Menu.Item key="4"><Link to="/forum">All Questions</Link></Menu.Item>
+          <Menu.Item key="5"><Link to="/your-questions">Your Questions</Link></Menu.Item>
           {/* <SubMenu key="sub3" title="Submenu">
             <Menu.Item key="7">Option 7</Menu.Item>
             <Menu.Item key="8">Option 8</Menu.Item>

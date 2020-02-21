@@ -36,7 +36,7 @@ class Login extends React.Component {
                           "image": response.imageUrl,
                       })
                       response.data.code===200?message.success(response.data.msg,4): message.error(response.data.msg,4); 
-                      localStorage.setItem("user_id",response.data.user_id)
+                      localStorage.setItem("user_id",response.data.id)
                       Auth.authenticate()
                       this.props.history.push('/')
                     }
@@ -58,7 +58,8 @@ class Login extends React.Component {
         let response=await login({...payload})
         Auth.authenticate()
         this.props.history.push('/')
-        localStorage.setItem("user_id",response.data.user_id)
+        console.log(response)
+        localStorage.setItem("user_id",response.data.id)
 
         message.success(response.data.msg, 5);
       }
