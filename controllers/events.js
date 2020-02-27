@@ -84,6 +84,27 @@ class EventsController {
             return Promise.reject(err)
         }
     }
+    async deleteComment(data) {
+
+        try {
+            const {
+                comment_id,
+                event_id,
+            } = data;
+            let message, response
+            const matchVote = await models.Comment.findOne({ where: { id:comment_id, EventId: event_id} });
+            if (matchVote) {
+                matchVote.destroy()
+                message = "Comment Deleted Succesfully"
+            }
+            return Promise.resolve({ code: 200, msg: message, response: response });
+
+        } catch (err) {
+            global.log.error(err);
+            console.log(err)
+            return Promise.reject(err)
+        }
+    }
     async getAll() {
 
         try {

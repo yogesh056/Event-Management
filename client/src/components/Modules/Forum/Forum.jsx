@@ -37,11 +37,12 @@ export default class Forum extends React.Component {
         <List
           itemLayout="vertical"
           size="large"
-          style={{margin:'0 auto', width: 600}}
+          style={{margin:'0 auto', width: 800}}
           dataSource={listData}
           renderItem={item => (
             <List.Item
               key={item.title}
+              style={{margin:"10px 0px"}}
               actions={
                 !loading && [
                   <IconText type="star-o" text="156" key="skeleton-star-o" />,

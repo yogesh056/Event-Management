@@ -33,8 +33,12 @@
     "material-ui-flat-pagination": "^4.0.0",
     "moment": "^2.24.0",
     "prop-types": "15.7.2",
+    "rc-queue-anim": "^1.8.3",
+    "rc-scroll-anim": "^2.7.4",
+    "rc-tween-one": "^2.6.8",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-github-button": "^0.1.11",
     "react-google-login": "^5.1.1",
     "react-google-maps": "^9.4.5",
     "react-hot-loader": "4.9.0",
@@ -46,7 +50,8 @@
     "react-scrollbar": "^0.5.6",
     "react-select": "^3.0.8",
     "react-uuid": "^1.0.2",
-    "string-template": "^1.0.0"
+    "string-template": "^1.0.0",
+    "umi-plugin-antd-theme": "^1.0.15"
   },
   "scripts": {
     "start": "react-scripts start",

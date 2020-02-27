@@ -87,7 +87,7 @@ export default class CardContainer extends React.Component {
                   title={item.user.user_name}
                   description={moment(item.createdAt).fromNow()}
                 />}
-                style={{ width: 600 }}
+                style={{ width: 600 ,cursor:"pointer" }}
               >
                 <Card
                   style={{ width: 552 }}

@@ -65,6 +65,18 @@ class EventsRoutes {
   
         res.end();
       });
+      router.post("/deleteComment", async (req, res) => {
+        try {
+          console.log(req.body,this.controller)
+        const response = await this.controller.deleteComment(req.body);
+          res.json(response);
+        } catch (err) {
+          global.log.error(err);
+          res.json({ code: 500, msg: "An error occurred !" });
+        }
+  
+        res.end();
+      });
     }
     
     getRouter() {

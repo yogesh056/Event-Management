@@ -4,7 +4,8 @@ import AsyncSelect from '../../Inputs/AsyncSelect';
 import { storage } from '../../../firebase/index';
 import API from "../../../middleware/api"
 import moment from 'moment';
-import GoogleMaps from "../../GoogleMaps/GoogleMaps"
+import Auth from "../../../auth/ProtectedRoute"
+
 const { Option } = Select;
 
 class EventForm extends React.Component {
@@ -15,7 +16,7 @@ class EventForm extends React.Component {
       loading: false,
     };
   }
-
+  
   showDrawer = () => {
     this.setState({
       visible: true,
@@ -43,19 +44,38 @@ class EventForm extends React.Component {
         })
       })
   }
+  componentWillMount() {
+   
+  }
+  getUserDetail=async()=>
+  {
+      let userDetail=await Auth.getUserDetails()
+      console.log("User in Events",userDetail)
+      if (userDetail) {
+        this.setState({userDetail})
+      }
+  }
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(this.props) !== JSON.stringify(prevProps)) {
+      this.getUserDetail()
+        return true;
+    } else return false;
+}
   handleSubmit = e => {
+    let {userDetail}=this.state
     e.preventDefault();
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         values.college = 1
         values.city = 2
         values.state = 3
-        values.UserId=localStorage.getItem('user_id').id
+        values.UserId=localStorage.getItem('user_id')
         values.images = this.state.imgurl
         console.log(values)
+        
         let response
         try {
-          response = await API.post('/events/addEvent', { name: values.name, description: values.description, image: values.image, state: values.state, city: values.city, college: values.college, start_date: values.start_date })
+          response = await API.post('/events/addEvent', {UserId:userDetail.id, name: values.name, description: values.description, images: values.image, state: values.state, city: values.city, college: values.college, start_date: values.start_date })
           console.log(response)
           message.success(response.data.msg, 4);
           this.onClose()
@@ -77,9 +97,116 @@ class EventForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { loading } = this.state
     return (
-    <></>)
+      <div>
+        <Button type="primary" onClick={this.showDrawer} style={{ float: 'right' }}>
+          <Icon type="plus" /> New Event
+        </Button>
+        <Drawer
+          title="Create a new Event"
+          width={720}
+          onClose={this.onClose}
+          visible={this.state.visible}
+          bodyStyle={{ paddingBottom: 80 }}
+        >
+          <Form layout="vertical" onSubmit={this.handleSubmit}>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item label="Name">
+                  {getFieldDecorator('name', {
+                    rules: [{ required: true, message: 'Please enter user name' }],
+                  })(<Input placeholder="Please enter user name" />)}
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label="Upload Image">
+                  {!loading ? <input
+                    type="file"
+                    className="form-control"
+                    name="image"
+                    onChange={this.uploadImage}
+                  /> : <Icon type="loading" style={{ fontSize: 24 }} spin />}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item label="State">
+                  {getFieldDecorator('state', {
+                    rules: [{ message: 'Please select an owner' }],
+                  })(
+                    <AsyncSelect />
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label="City">
+                  {getFieldDecorator('city', {
+                    rules: [{ message: 'Please choose the type' }],
+                  })(
+                    <AsyncSelect />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item label="College">
+                  {getFieldDecorator('college', {
+                    rules: [{ message: 'Please choose the approver' }],
+                  })(
+                    <AsyncSelect />
+                  )}
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label="Date of Birth">
+                  {getFieldDecorator('start_date', {
+                    rules: [{ required: true, message: 'Please Select DOB' }],
+                  })(
+                    <DatePicker defaultValue={moment('2015-01-01', 'YYYY-MM-DD')} format='YYYY-MM-DD' />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col span={24}>
+                <Form.Item label="Description">
+                  {getFieldDecorator('description', {
+                    rules: [
+                      {
+                        required: true,
+                        message: 'please enter url description',
+                      },
+                    ],
+                  })(<Input.TextArea rows={4} placeholder="please enter url description" />)}
+                </Form.Item>
+              </Col>
+            </Row>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form>
+          <div
+            style={{
+              position: 'absolute',
+              right: 0,
+              bottom: 0,
+              width: '100%',
+              borderTop: '1px solid #e9e9e9',
+              padding: '10px 16px',
+              background: '#fff',
+              textAlign: 'right',
+            }}
+          >
+            <Button onClick={this.onClose} style={{ marginRight: 8 }}>
+              Cancel
+            </Button>
+
+          </div>
+        </Drawer>
+      </div>
+    );
   }
 }
 
 export const AddEvent = Form.create()(EventForm);
-

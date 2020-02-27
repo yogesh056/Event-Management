@@ -66,6 +66,10 @@ export default class SingleEventModal extends React.Component {
             });
         }, 1000);
     };
+    deleteComment = async(id) => {
+        let response = await API.post('/events/deleteComment', { event_id: this.props.eventDetails.id, comment_id:id })
+        this.eventUpdate()
+    }
 
     handleChange = e => {
         this.setState({
@@ -88,7 +92,7 @@ export default class SingleEventModal extends React.Component {
                         title={<Meta
                             avatar={<Avatar src={eventDetails.user.image} />}
                             title={eventDetails.user.user_name}
-                            description="a few second ago"
+                            description={moment(eventDetails.createdAt).fromNow()}
                         />}
                         style={{ width: "100%" }}
                     >
@@ -176,7 +180,7 @@ export default class SingleEventModal extends React.Component {
                                                 </Tooltip>
                                             }
                                         />
-                                        <span style={{ color: "red", fontSize: "14px" }}>
+                                        <span style={{ color: "red", fontSize: "14px",cursor:"pointer" }} onClick={() => this.deleteComment(item.id)}>
                                             {item.user.id === userDetail.id ? <Icon type="delete" /> : ""}
                                         </span>
 

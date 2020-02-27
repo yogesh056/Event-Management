@@ -176,7 +176,7 @@ export default class SingleForumModal extends React.Component {
                                                 </Tooltip>
                                             }
                                         />
-                                        <span style={{ color: "red", fontSize: "14px" }}>
+                                        <span style={{ color: "red", fontSize: "14px",cursor:"pointer" }}>
                                             {item.user.id === userDetail.id ? <Icon type="delete" /> : ""}
                                         </span>
 

@@ -5,6 +5,12 @@ const cors = require("cors");
 const models = require('./models')
 const PORT = 5001;
 const HttpServer = require("http").createServer(app);
+// const io = require('socket.io')(HttpServer)
+// const ClientManager = require('./ClientManager')
+// const ChatroomManager = require('./ChatroomManager')
+// const makeHandlers = require('./handlers')
+// const clientManager = ClientManager()
+// const chatroomManager = ChatroomManager()
 global.log = require("logger").createLogger("dev.log");
 global.log.setLevel("error");
 class Server {
@@ -31,7 +37,44 @@ class Server {
             })
         );
     }
+    // initSocket() {
+    //     io.on('connection', function (client) {
+    //         const {
+    //             handleRegister,
+    //             handleJoin,
+    //             handleLeave,
+    //             handleMessage,
+    //             handleGetChatrooms,
+    //             handleGetAvailableUsers,
+    //             handleDisconnect
+    //         } = makeHandlers(client, clientManager, chatroomManager)
 
+    //         console.log('client connected...', client.id)
+    //         clientManager.addClient(client)
+
+    //         client.on('register', handleRegister)
+
+    //         client.on('join', handleJoin)
+
+    //         client.on('leave', handleLeave)
+
+    //         client.on('message', handleMessage)
+
+    //         client.on('chatrooms', handleGetChatrooms)
+
+    //         client.on('availableUsers', handleGetAvailableUsers)
+
+    //         client.on('disconnect', function () {
+    //             console.log('client disconnect...', client.id)
+    //             handleDisconnect()
+    //         })
+
+    //         client.on('error', function (err) {
+    //             console.log('received error from client:', client.id)
+    //             console.log(err)
+    //         })
+    //     })
+    // }
     initServer() {
         try {
             models.sequelize.sync().then(function () {
@@ -65,12 +108,12 @@ class Server {
             app.use(
                 '/api/users',
                 usersRouter.getRouter()
-              );
-              const eventsRouter = require("./routes/events")(this.events_controller);
-              app.use(
-                  '/api/events',
-                  eventsRouter.getRouter()
-                );
+            );
+            const eventsRouter = require("./routes/events")(this.events_controller);
+            app.use(
+                '/api/events',
+                eventsRouter.getRouter()
+            );
         }
         catch (err) {
             global.log.error(err);
