@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
+RUN sudo npm install
 
 # Bundle app source
 COPY . /usr/src/app
@@ -17,4 +17,4 @@ COPY . /usr/src/app
 EXPOSE 5000
 
 # You can change this
-CMD [ "npm", "run", "dev" ]
+CMD [ "sudo","npm", "run", "dev" ]
