@@ -1,0 +1,42 @@
+version: "3"
+services:
+    frontend:
+        container_name: event-management-fe
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        image: yogesh/event-management
+        ports:
+            - "3001:3000"
+        volumes:
+            - ./client:/usr/src/app
+    backend:
+        container_name: event-management-be
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        image: yogesh/event-management
+        ports:
+            - "5001:5000"
+        depends_on:
+            - postgres
+        environment: 
+           - DATABASE_URL=postgres://root:test@postgres:5432/event-management
+        links:
+            - postgres    
+        volumes:
+            - ./server:/usr/src/app
+    postgres:
+       image: postgres:11
+       restart: always
+       ports: 
+        - "5431:5432"
+       environment: 
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: test
+        POSTGRES_DB: event-management
+        POSTGRES_HOST: postgres
+       volumes:
+        - postgres:/var/lib/postgresql/data
+volumes:
+    postgres: ~
