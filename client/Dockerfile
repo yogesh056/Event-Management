@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN sudo npm install
+RUN  npm install
 
 # Bundle app source
 COPY . /usr/src/app
@@ -14,4 +14,4 @@ COPY . /usr/src/app
 
 EXPOSE 3000
 
-CMD ["sudo","npm", "start" ]
+CMD ["npm", "start" ]
