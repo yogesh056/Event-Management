@@ -3,8 +3,9 @@ import Navbar from "./Navbar/Navbar"
 import SideBar from "./SideBar/SideBar"
 import { Layout, Breadcrumb, Affix,BackTop } from 'antd';
 import { Route, Switch } from 'react-router-dom';
-import Events from "../Modules/Events/Events"
-import Forum from "../Modules/Forum/Forum"
+import Events from "../Events/Events"
+import Article from "../Article/Article"
+import Forum from "../Forum/Forum"
 import Banner from "../Dashboard/Banner"
 const { Header, Footer, Sider, Content, Spin } = Layout;
 
@@ -47,6 +48,8 @@ export default class Dashboard extends Component {
                               
                                 <Route path="/your-events" component={Events} />
                                 <Route path="/forum" component={Forum} />
+                                <Route path="/your-article" component={Article} />
+                                <Route path="/article" component={Article} />
                                 <BackTop>
                                     <div className="ant-back-top-inner">UP</div>
                                 </BackTop>

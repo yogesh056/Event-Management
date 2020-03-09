@@ -5,10 +5,11 @@ import { storage } from '../../firebase/index';
 import API from "../../middleware/api"
 import moment from 'moment';
 import Auth from "../../auth/ProtectedRoute"
+import Quill from '../../components/Inputs/Quill';
 
 const { Option } = Select;
 
-class EventForm extends React.Component {
+class ArticleForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -99,7 +100,7 @@ class EventForm extends React.Component {
     return (
       <div>
         <Button type="primary" onClick={this.showDrawer} style={{ float: 'right' }}>
-          <Icon type="plus" /> New Event
+          <Icon type="plus" /> New Article
         </Button>
         <Drawer
           title="Create a new Event"
@@ -108,84 +109,9 @@ class EventForm extends React.Component {
           visible={this.state.visible}
           bodyStyle={{ paddingBottom: 80 }}
         >
-          <Form layout="vertical" onSubmit={this.handleSubmit}>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item label="Name">
-                  {getFieldDecorator('name', {
-                    rules: [{ required: true, message: 'Please enter user name' }],
-                  })(<Input placeholder="Please enter user name" />)}
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="Upload Image">
-                  {!loading ? <input
-                    type="file"
-                    className="form-control"
-                    name="image"
-                    onChange={this.uploadImage}
-                  /> : <Icon type="loading" style={{ fontSize: 24 }} spin />}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item label="State">
-                  {getFieldDecorator('state', {
-                    rules: [{ message: 'Please select an owner' }],
-                  })(
-                    {/* <AsyncSelect /> */}
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="City">
-                  {getFieldDecorator('city', {
-                    rules: [{ message: 'Please choose the type' }],
-                  })(
-                    {/* <AsyncSelect /> */}
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item label="College">
-                  {getFieldDecorator('college', {
-                    rules: [{ message: 'Please choose the approver' }],
-                  })(
-                    {/* <AsyncSelect /> */}
-                  )}
-                </Form.Item>
-              </Col>
-              <Col span={12}>
-                <Form.Item label="Date of Birth">
-                  {getFieldDecorator('start_date', {
-                    rules: [{ required: true, message: 'Please Select DOB' }],
-                  })(
-                    <DatePicker defaultValue={moment('2015-01-01', 'YYYY-MM-DD')} format='YYYY-MM-DD' />
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={24}>
-                <Form.Item label="Description">
-                  {getFieldDecorator('description', {
-                    rules: [
-                      {
-                        required: true,
-                        message: 'please enter url description',
-                      },
-                    ],
-                  })(<Input.TextArea rows={4} placeholder="please enter url description" />)}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form>
+        
+           <Quill/>
+          
           <div
             style={{
               position: 'absolute',
@@ -209,4 +135,4 @@ class EventForm extends React.Component {
   }
 }
 
-export const AddEvent = Form.create()(EventForm);
+export const AddArticle = Form.create()(ArticleForm);

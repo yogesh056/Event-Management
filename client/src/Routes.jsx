@@ -1,12 +1,11 @@
 /* eslint-disable no-restricted-globals */
 import React, { Component } from 'react';
 import { Route, Switch, BrowserRouter as Router ,Redirect} from 'react-router-dom';
-import { WrappedLogin } from "./components/LandingPage/Login/Login"
-import Stepper from "./components/LandingPage/Stepper/Stepper"
-import Dashboard from "../src/components/Dashboard/Dashboard"
+import { WrappedLogin } from "../src/modules/LandingPage/Login/Login"
+import Stepper from "../src/modules/LandingPage/Stepper/Stepper"
+import Dashboard from "../src/modules/Dashboard/Dashboard"
 import { Layout } from 'antd';
 import Auth from './auth/ProtectedRoute';
-
 class Routes extends Component {
 	constructor(props) {
 		super(props);

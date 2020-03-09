@@ -5,11 +5,12 @@ import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
+import BingMaps from "../../components/Inputs/BingMaps"
 import BannerSVGAnim from './BannerSVGAnim';
 
 function Banner(props) {
   return (
-    <div className="banner-wrapper" style={{width:"50%", margin:"0 auto"}}>
+    [<div className="banner-wrapper" style={{width:"50%", margin:"0 auto"}}>
       {props.isMobile && (
         <TweenOne animation={{ opacity: 1 }} className="banner-image-wrapper">
           <div className="home-banner-image">
@@ -48,7 +49,9 @@ function Banner(props) {
           <BannerSVGAnim />
         </TweenOne>
       )}
-    </div>
+    </div>,
+    <BingMaps/>
+    ]
   );
 }
 

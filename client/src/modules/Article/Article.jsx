@@ -1,13 +1,12 @@
 import { Skeleton, Switch, List, Avatar, Icon, Tooltip, Progress, message, Typography, Tag, Divider, Card } from 'antd';
 import React from 'react';
-import SingleEventModal from '../SingleEventModal';
-import { AddEvent } from '../AddEvent'
-import API from "../../../middleware/api"
-import Auth from '../../../auth/ProtectedRoute';
+import {AddArticle } from './AddArticle'
+import API from "../../middleware/api"
+import Auth from '../../auth/ProtectedRoute';
 import moment from "moment"
 const { Text } = Typography;
 const { Meta } = Card;
-export default class CardContainer extends React.Component {
+export default class Article extends React.Component {
   state = {
     eventLoading: true,
     visible: false,
@@ -70,14 +69,14 @@ export default class CardContainer extends React.Component {
     const { eventLoading, visible, events,eventDetails,userDetail,eventSelected} = this.state;
 
     return (
-      [<AddEvent/>,
+      [<AddArticle/>,
       <List
         itemLayout="horizontal"
         style={{margin:'0 auto', width: 600}}
         dataSource={events}
         renderItem={item => (
           <List.Item>
-          {eventSelected?<SingleEventModal eventDetails={eventDetails} userDetail={userDetail} visible={visible} handleCancel={this.handleCancel}/>:''}
+          
             <Skeleton loading={eventLoading} active avatar>
               <Card
                 className="card-event"

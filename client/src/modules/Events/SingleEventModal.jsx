@@ -1,7 +1,7 @@
 import React from 'react';
 import { Comment, Form, Button, Input, Modal } from 'antd';
 import moment from 'moment';
-import API from "../../../middleware/api"
+import API from "../../middleware/api"
 import { Skeleton, Switch, List, Avatar, Icon, Tooltip, Progress, message, Typography, Tag, Divider, Card, Empty } from 'antd';
 const { Text } = Typography;
 const { Meta } = Card;

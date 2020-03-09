@@ -55,12 +55,12 @@ export default class SideBar extends React.Component {
           title={
             <span>
             <Icon type="google" />
-              <span>Google Events</span>
+              <span>Articles</span>
             </span>
           }
         >
-          <Menu.Item key="6">Today Events</Menu.Item>
-        </SubMenu>
+  <Menu.Item key="6"><Link to="/article">All Questions</Link></Menu.Item>
+          <Menu.Item key="7"><Link to="/your-article">Your Questions</Link></Menu.Item>        </SubMenu>
       </Menu>
     );
   }

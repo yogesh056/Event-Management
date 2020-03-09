@@ -1,60 +1,68 @@
-import { Mentions } from 'antd';
-import debounce from 'lodash/debounce';
 import React, { Component } from 'react'
-const { Option } = Mentions;
+import { Select, Spin } from 'antd';
+import API from "../../middleware/api"
 
-export default class AsyncSelect extends React.Component {
-  constructor() {
-    super();
+const { Option } = Select;
 
-    this.loadGithubUsers = debounce(this.loadGithubUsers, 800);
+export default class AsyncSelect extends Component {
+  constructor(props) {
+    super(props);
+    this.lastFetchId = 0;
+    this.state = {
+      data: [],
+      value: [],
+      fetching: false,
+    };
   }
 
-  state = {
-    search: '',
-    loading: false,
-    users: [],
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(this.props) !== JSON.stringify(prevProps)) {
+      this.getValues()
+        return true;
+    } else return false;
+}
+getValues = async()=> {
+   const {api,custom}=this.props
+    this.lastFetchId += 1;
+    // const fetchId = this.lastFetchId;
+    this.setState({ data: [], fetching: true });
+    let valueRes = await API.get(`/${api}`)
+    console.log('fetching details',valueRes,this.props)
+    const data=valueRes.data.response.map(value => ({
+          text:custom?(value[`${this.props.customValue}`]):`${value.name}`,
+          value:`${value.id}`
+        }));
+    this.setState({ data, fetching: false });
   };
 
-  onSearch = search => {
-    this.setState({ search, loading: !!search, users: [] });
-    console.log('Search:', search);
-    this.loadGithubUsers(search);
+  handleChange = value => {
+    this.setState({
+      value,
+      data: [],
+      fetching: false,
+    });
   };
-
-  loadGithubUsers(key) {
-    if (!key) {
-      this.setState({
-        users: [],
-      });
-      return;
-    }
-
-    fetch(`https://api.github.com/search/users?q=${key}`)
-      .then(res => res.json())
-      .then(({ items = [] }) => {
-        const { search } = this.state;
-        if (search !== key) return;
-
-        this.setState({
-          users: items.slice(0, 10),
-          loading: false,
-        });
-      });
-  }
 
   render() {
-    const { users, loading } = this.state;
+    const { fetching, data, value } = this.state;
+    const { placeholder } = this.props;
 
     return (
-      <Mentions style={{ width: '100%' }} loading={loading} onSearch={this.onSearch}>
-        {users.map(({ login, avatar_url: avatar }) => (
-          <Option key={login} value={login} className="antd-demo-dynamic-option">
-            <img src={avatar} alt={login} />
-            <span>{login}</span>
-          </Option>
+      <Select
+        labelInValue
+        value={value}
+        placeholder={placeholder}
+        notFoundContent={fetching ? <Spin size="small" /> : null}
+        filterOption={false}
+        onSearch={this.getValues}
+        onChange={this.handleChange}
+        style={{ width: '100%' }}
+      >
+        {data.map(d => (
+          <Option key={d.value}>{d.text}</Option>
         ))}
-      </Mentions>
+      </Select>
     );
   }
 }
+

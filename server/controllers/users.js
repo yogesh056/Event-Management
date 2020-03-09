@@ -227,6 +227,23 @@ class UsersController {
       return Promise.reject(err);
     }
   }
+  async getAllUsers() {
+    try {
+      const response = await models.User.findAll({});
+
+      if (response) {
+        return Promise.resolve({ code: 200, msg: "Got all Users", response: response });
+      } else {
+        return Promise.resolve({ code: 400, msg: "No Users" });
+      }
+
+
+    } catch (err) {
+      console.error(err);
+      global.log.error(err);
+      return Promise.reject(err);
+    }
+  }
   sendSecretKey(email, secretKey) {
 
     return new Promise(async (resolve, reject) => {

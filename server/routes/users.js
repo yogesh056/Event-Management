@@ -80,7 +80,18 @@ class UsersRoutes {
   
         res.end();
       });
-    }
+    router.get("/allUsers",  async (req, res) => {
+      try {
+      const response = await this.controller.getAllUsers();
+        res.json(response);
+      } catch (err) {
+        global.log.error(err);
+        res.json({ code: 500, msg: "An error occurred !" });
+      }
+
+      res.end();
+    });
+  }
     getRouter() {
       return router;
     }
